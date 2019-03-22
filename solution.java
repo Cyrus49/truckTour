@@ -14,7 +14,7 @@ public class Solution {
         int[] diffSum = new int[petrolpumps.length];
         for(int i = 0; i<petrolpumps.length; i++){
             diff[i] = petrolpumps[i][0]-petrolpumps[i][1];
-            diffSum = diff[i];
+            diffSum[i] = diff[i];
             if(i!=0){
                 diffSum[i] += diffSum[i-1];
             }
@@ -22,7 +22,7 @@ public class Solution {
         int firstPos = -1;
         for(int h = petrolpumps.length-1; h>=0; h--){
             if(diffSum[h]<0) break;
-            if(diffSum[h]==0) firstPos = h;
+            if(diffSum[h]>=0) firstPos = h;
             
         }
         return firstPos;
