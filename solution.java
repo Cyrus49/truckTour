@@ -11,10 +11,21 @@ public class Solution {
      */
     static int truckTour(int[][] petrolpumps) {
         int[] diff = new int[petrolpumps.length];
+        int[] diffSum = new int[petrolpumps.length];
         for(int i = 0; i<petrolpumps.length; i++){
             diff[i] = petrolpumps[i][0]-petrolpumps[i][1];
+            diffSum = diff[i];
+            if(i!=0){
+                diffSum[i] += diffSum[i-1];
+            }
         }
-        return diff[0];
+        int firstPos = -1;
+        for(int h = petrolpumps.length-1; h>=0; h--){
+            if(diffSum[h]<0) break;
+            if(diffSum[h]==0) firstPos = h;
+            
+        }
+        return firstPos;
         /*
          * Write your code here.
          */
