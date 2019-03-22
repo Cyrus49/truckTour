@@ -16,15 +16,18 @@ public class Solution {
         }
         int curAmt = diff[0];
         int startIndx = 0;
-        for(int end = 1; end=!startIndx || curAmt<0; end++){
+        for(int end = 1; end!=startIndx || curAmt<0;){
 
-            while(curAmt<0){
-                curAmt -= diff[start];
-                start++;
-                start%=petrolpumps.length;
+            while(curAmt<0&&startIndx!= end){
+                curAmt -= diff[startIndx];
+                startIndx++;
+                startIndx%=petrolpumps.length;
             }
+            curAmt+= diff[end];
+            end++;
             end %=petrolpumps.length;
         }
+        return startIndx;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
