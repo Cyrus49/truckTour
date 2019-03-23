@@ -9,15 +9,15 @@ public class Solution {
     /*
      * Complete the truckTour function below.
      */
-    static int truckTour(int[][] petrolpumps) {
+    static int truckTour(int[][] petrolpumps) { 
         int[] diff = new int[petrolpumps.length];
-        for(int i = 0; i<petrolpumps.length; i++){
+        for(int i = 0; i<petrolpumps.length; i++){ //prepares diff array
             diff[i] = petrolpumps[i][0]-petrolpumps[i][1];
         }
         int curAmt = diff[0];
         int startIndx = 0;
-        for(int end = 1; end!=startIndx || curAmt<0;){
-            while(curAmt<0&&startIndx!= end){
+        for(int end = 1; end!=startIndx || curAmt<0;){ //loops through each pump
+            while(curAmt<0&&startIndx!= end){ //remove first index if the sum becomes negative
                 curAmt -= diff[startIndx];
                 startIndx++;
                 startIndx%=petrolpumps.length;
