@@ -17,7 +17,6 @@ public class Solution {
         int curAmt = diff[0];
         int startIndx = 0;
         for(int end = 1; end!=startIndx || curAmt<0;){
-
             while(curAmt<0&&startIndx!= end){
                 curAmt -= diff[startIndx];
                 startIndx++;
